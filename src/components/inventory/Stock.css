@@ -1,0 +1,157 @@
+.stock-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Encabezado  */
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.stock-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #1a1b1e;
+}
+
+/* Botón Regresar */
+.back-container {
+  margin-bottom: 30px;
+}
+.btn-back-dark {
+  background: #1a1b1e;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+.btn-back-dark:hover {
+  transform: translateX(-5px);
+}
+
+/* --- GRID PRINCIPAL  --- */
+.stock-actions-grid {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Estilos base de la tarjeta */
+.stock-card {
+  background: white;
+  flex: 1;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Acentos de Color  */
+.green-accent {
+  border-left: 15px solid #66bb6a;
+}
+.red-accent {
+  border-left: 15px solid #ef5350;
+}
+
+.stock-card h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+/* Inputs y Selects */
+.form-group {
+  margin-bottom: 25px;
+}
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.custom-select,
+.custom-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+  font-size: 1rem;
+  color: #444;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Botones de Acción */
+.btn-action {
+  width: 100%;
+  max-width: 150px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  border: 2px solid transparent;
+}
+
+.btn-green {
+  background-color: #66bb6a;
+}
+.btn-green:hover {
+  background-color: #43a047;
+  border: 2px solid #2e7d32;
+}
+
+.btn-red {
+  background-color: #ef5350;
+}
+.btn-red:hover {
+  background-color: #e53935;
+  border: 2px solid #c62828;
+}
+
+@media (max-width: 900px) {
+  .stock-actions-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stock-card {
+    width: 100%;
+    padding: 30px 20px;
+    border-left-width: 10px;
+  }
+
+  .stock-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-pill {
+    width: 100%;
+  }
+}

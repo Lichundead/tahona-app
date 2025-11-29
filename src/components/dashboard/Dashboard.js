@@ -32,7 +32,6 @@ const Dashboard = () => {
         <div className="card chart-main">
           <h4>Resumen</h4>
           <div className="fake-chart-lines">
-            {/* Simulación visual de gráfico */}
             <svg height="100" width="100%">
               <polyline
                 points="0,80 50,40 100,60 150,20 200,50 300,10"

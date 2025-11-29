@@ -1,24 +1,38 @@
 :root {
   --bg-dark: #1a1b1e;
   --bg-light: #f3f4f6;
-  --primary: #2d2d2d;
-  --accent-green: #4caf50;
-  --accent-red: #e53935;
+  --primary-color: #2d2d2d;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", "Roboto", sans-serif;
   background-color: var(--bg-light);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Layout General */
 .app-layout {
   display: flex;
-  height: 100vh;
-}
-.content {
-  padding: 40px;
+  min-height: 100vh;
   width: 100%;
-  overflow-y: auto;
+  position: relative;
+}
+
+.main-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  padding: 30px;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
 }
