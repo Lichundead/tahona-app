@@ -1,0 +1,39 @@
+.stock-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+.stock-action {
+  flex: 1;
+  padding: 40px;
+}
+.green-border {
+  border-left: 10px solid var(--accent-green);
+}
+.red-border {
+  border-left: 10px solid var(--accent-red);
+}
+.stock-action input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.btn-green {
+  background: var(--accent-green);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-red {
+  background: var(--accent-red);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}

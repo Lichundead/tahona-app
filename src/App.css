@@ -1,0 +1,24 @@
+:root {
+  --bg-dark: #1a1b1e;
+  --bg-light: #f3f4f6;
+  --primary: #2d2d2d;
+  --accent-green: #4caf50;
+  --accent-red: #e53935;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-light);
+}
+
+/* Layout General */
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+.content {
+  padding: 40px;
+  width: 100%;
+  overflow-y: auto;
+}

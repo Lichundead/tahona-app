@@ -1,0 +1,146 @@
+/* --- Reutilización del Encabezado (Consistencia) --- */
+.top-bar-aligned {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.right-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-back-dark {
+  background: #1a1b1e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.btn-back-dark:hover {
+  background: #333;
+}
+
+.left-group h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.search-pill {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  background: #eef;
+  width: 200px;
+  outline: none;
+}
+.user-profile {
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+}
+
+.btn-add-product {
+  background: #1a1b1e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- Estilos Específicos de la Tarjeta de Informes --- */
+.reports-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.reports-toolbar {
+  display: flex;
+  margin-bottom: 20px;
+}
+.spacer {
+  flex: 1;
+} /* Truco para empujar botones a la derecha */
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+.btn-outline {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Tabla */
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+.reports-table th {
+  text-align: left;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+  color: #222;
+  font-weight: bold;
+}
+.reports-table td {
+  padding: 20px 10px;
+  border-bottom: 1px solid #f9f9f9;
+  color: #444;
+}
+.date-cell {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Efecto cebra para las filas (opcional, se ve bien en reportes largos) */
+.row-odd {
+  background-color: #fcfcfc;
+}
+
+/* Paginación */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.page-item {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #666;
+}
+.page-item.active {
+  background: #333;
+  color: white;
+}
