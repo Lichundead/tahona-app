@@ -8,10 +8,16 @@ const Login = ({ onLogin }) => {
   const [error, setError] = useState("");
 
   const manejarIngreso = () => {
-    if (usuario && password) {
+    if (!usuario || !password) {
+      setError("Por favor completa los campos");
+      return;
+    }
+
+    if (usuario === "maria71" && password === "12345") {
+      setError("");
       onLogin();
     } else {
-      setError("Por favor completa los campos");
+      setError("Usuario o contraseña incorrectos");
     }
   };
 
