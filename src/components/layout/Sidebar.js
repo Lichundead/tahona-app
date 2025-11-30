@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({ setView, onLogout, isOpen, closeSidebar, currentView }) => {
+const Sidebar = ({
+  setView,
+  onLogout,
+  isOpen,
+  openSidebar,
+  closeSidebar,
+  currentView,
+}) => {
   const [isProductsOpen, setIsProductsOpen] = useState(
     currentView === "stock" || currentView === "resumen"
   );
@@ -16,6 +23,11 @@ const Sidebar = ({ setView, onLogout, isOpen, closeSidebar, currentView }) => {
         className={`sidebar-overlay ${isOpen ? "active" : ""}`}
         onClick={closeSidebar}
       ></div>
+      {!isOpen && (
+        <button className="mobile-tab-toggle" onClick={openSidebar}>
+          ➤
+        </button>
+      )}
 
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
@@ -38,7 +50,13 @@ const Sidebar = ({ setView, onLogout, isOpen, closeSidebar, currentView }) => {
             🔳 General
           </div>
 
-          <div className="nav-item">
+          <div
+            className={`nav-item ${currentView === "mensajes" ? "active" : ""}`}
+            onClick={() => {
+              setView("mensajes");
+              closeSidebar();
+            }}
+          >
             ✉️ Mensajes <span className="badge">2</span>
           </div>
 
@@ -89,7 +107,15 @@ const Sidebar = ({ setView, onLogout, isOpen, closeSidebar, currentView }) => {
             📄 Informes
           </div>
 
-          <div className="nav-item mt-auto">⚙️ Ajustes</div>
+          <div
+            className={`nav-item ${currentView === "ajustes" ? "active" : ""}`}
+            onClick={() => {
+              setView("ajustes");
+              closeSidebar();
+            }}
+          >
+            ⚙️ Ajustes
+          </div>
         </nav>
 
         <div className="logout" onClick={onLogout}>

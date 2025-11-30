@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
 
-// --- IMPORTACIONES DE COMPONENTES (Estructura Modular) ---
 import Login from "./components/auth/Login";
 import Sidebar from "./components/layout/Sidebar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Stock from "./components/inventory/Stock";
 import Resumen from "./components/reports/Resumen";
 import Informes from "./components/reports/Informes";
+import Mensajes from "./components/messages/Mensajes";
+import Ajustes from "./components/options/Ajustes";
 
 function App() {
   const [session, setSession] = useState(false);
@@ -34,6 +35,7 @@ function App() {
         onLogout={handleLogout}
         isOpen={isSidebarOpen}
         closeSidebar={() => setIsSidebarOpen(false)}
+        openSidebar={() => setIsSidebarOpen(true)}
       />
 
       <main className="main-content">
@@ -41,11 +43,15 @@ function App() {
           <Dashboard toggleSidebar={() => setIsSidebarOpen(true)} />
         )}
 
+        {view === "mensajes" && <Mensajes setView={setView} />}
+
         {view === "stock" && <Stock setView={setView} />}
 
         {view === "resumen" && <Resumen setView={setView} />}
 
         {view === "informes" && <Informes setView={setView} />}
+
+        {view === "ajustes" && <Ajustes setView={setView} />}
       </main>
     </div>
   );

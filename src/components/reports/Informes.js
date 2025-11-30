@@ -44,7 +44,6 @@ const Informes = ({ setView }) => {
 
   return (
     <div className="report-page">
-      {/* ENCABEZADO */}
       <header className="report-header">
         <h1>Informes de productos</h1>
         <div className="header-right">
@@ -56,18 +55,14 @@ const Informes = ({ setView }) => {
         </div>
       </header>
 
-      {/* NAVEGACIÓN */}
       <div className="nav-bar">
         <button className="btn-back-dark" onClick={() => setView("dashboard")}>
           ← Regresar
         </button>
       </div>
 
-      {/* CONTENEDOR PRINCIPAL */}
       <div className="table-card">
-        {/* BARRA DE HERRAMIENTAS (Solo filtros a la derecha) */}
         <div className="reports-toolbar">
-          {/* Un div vacío con flex-grow empuja los botones a la derecha */}
           <div className="spacer"></div>
 
           <div className="toolbar-actions">
@@ -76,7 +71,6 @@ const Informes = ({ setView }) => {
           </div>
         </div>
 
-        {/* TABLA RESPONSIVA */}
         <div className="table-responsive">
           <table className="custom-table reports-table">
             <thead>
@@ -100,7 +94,6 @@ const Informes = ({ setView }) => {
           </table>
         </div>
 
-        {/* PAGINACIÓN */}
         <div className="pagination-container">
           <div className="page-number">1</div>
           <div className="page-number active">2</div>
