@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tahona-app/static/css/main.1ce75940.css",
-    "main.js": "/tahona-app/static/js/main.32caca22.js",
+    "main.css": "/tahona-app/static/css/main.b0310955.css",
+    "main.js": "/tahona-app/static/js/main.8b6d9e00.js",
     "static/js/453.1904689b.chunk.js": "/tahona-app/static/js/453.1904689b.chunk.js",
     "index.html": "/tahona-app/index.html",
-    "main.1ce75940.css.map": "/tahona-app/static/css/main.1ce75940.css.map",
-    "main.32caca22.js.map": "/tahona-app/static/js/main.32caca22.js.map",
+    "main.b0310955.css.map": "/tahona-app/static/css/main.b0310955.css.map",
+    "main.8b6d9e00.js.map": "/tahona-app/static/js/main.8b6d9e00.js.map",
     "453.1904689b.chunk.js.map": "/tahona-app/static/js/453.1904689b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ce75940.css",
-    "static/js/main.32caca22.js"
+    "static/css/main.b0310955.css",
+    "static/js/main.8b6d9e00.js"
   ]
 }
