@@ -92,7 +92,7 @@ const Resumen = ({ setView }) => {
             </thead>
             <tbody>
               {productos.map((item, index) => (
-                <tr key={index}>
+                <tr key={`${item.nombre}-${index}`}>
                   <td className="fw-bold">{item.nombre}</td>
                   <td>{item.entradas}</td>
                   <td>{item.salidas}</td>

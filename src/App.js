@@ -10,11 +10,18 @@ import Informes from "./components/reports/Informes";
 import Mensajes from "./components/messages/Mensajes";
 import Ajustes from "./components/options/Ajustes";
 
+const VIEWS = {
+  dashboard: Dashboard,
+  mensajes: Mensajes,
+  stock: Stock,
+  resumen: Resumen,
+  informes: Informes,
+  ajustes: Ajustes,
+};
+
 function App() {
   const [session, setSession] = useState(false);
-
   const [view, setView] = useState("dashboard");
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLogout = () => {
@@ -27,6 +34,8 @@ function App() {
     return <Login onLogin={() => setSession(true)} />;
   }
 
+  const CurrentView = VIEWS[view];
+
   return (
     <div className="app-layout">
       <Sidebar
@@ -37,21 +46,11 @@ function App() {
         closeSidebar={() => setIsSidebarOpen(false)}
         openSidebar={() => setIsSidebarOpen(true)}
       />
-
       <main className="main-content">
-        {view === "dashboard" && (
-          <Dashboard toggleSidebar={() => setIsSidebarOpen(true)} />
-        )}
-
-        {view === "mensajes" && <Mensajes setView={setView} />}
-
-        {view === "stock" && <Stock setView={setView} />}
-
-        {view === "resumen" && <Resumen setView={setView} />}
-
-        {view === "informes" && <Informes setView={setView} />}
-
-        {view === "ajustes" && <Ajustes setView={setView} />}
+        <CurrentView
+          setView={setView}
+          toggleSidebar={() => setIsSidebarOpen(true)}
+        />
       </main>
     </div>
   );

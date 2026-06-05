@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({
-  setView,
-  onLogout,
-  isOpen,
-  openSidebar,
-  closeSidebar,
-  currentView,
-}) => {
+const TOP_NAV = [
+  { view: "dashboard", label: "🔳 General" },
+  { view: "mensajes", label: "✉️ Mensajes", badge: 2 },
+];
+
+const PRODUCT_NAV = [
+  { view: "stock", label: "↳ Salidas e ingresos" },
+  { view: "resumen", label: "↳ Resumen" },
+];
+
+const BOTTOM_NAV = [
+  { view: "informes", label: "📄 Informes" },
+  { view: "ajustes", label: "⚙️ Ajustes" },
+];
+
+const Sidebar = ({ setView, onLogout, isOpen, openSidebar, closeSidebar, currentView }) => {
   const [isProductsOpen, setIsProductsOpen] = useState(
     currentView === "stock" || currentView === "resumen"
   );
 
-  const toggleProducts = () => {
-    setIsProductsOpen(!isProductsOpen);
+  const navigate = (view) => {
+    setView(view);
+    closeSidebar();
   };
 
   return (
@@ -22,105 +31,65 @@ const Sidebar = ({
       <div
         className={`sidebar-overlay ${isOpen ? "active" : ""}`}
         onClick={closeSidebar}
-      ></div>
+      />
       {!isOpen && (
-        <button className="mobile-tab-toggle" onClick={openSidebar}>
-          ➤
-        </button>
+        <button className="mobile-tab-toggle" onClick={openSidebar}>➤</button>
       )}
 
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <h3 className="logo">Pastelería Tahona</h3>
-          <button className="close-btn" onClick={closeSidebar}>
-            ×
-          </button>
+          <button className="close-btn" onClick={closeSidebar}>×</button>
         </div>
 
         <nav>
-          <div
-            className={`nav-item ${
-              currentView === "dashboard" ? "active" : ""
-            }`}
-            onClick={() => {
-              setView("dashboard");
-              closeSidebar();
-            }}
-          >
-            🔳 General
-          </div>
-
-          <div
-            className={`nav-item ${currentView === "mensajes" ? "active" : ""}`}
-            onClick={() => {
-              setView("mensajes");
-              closeSidebar();
-            }}
-          >
-            ✉️ Mensajes <span className="badge">2</span>
-          </div>
+          {TOP_NAV.map(({ view, label, badge }) => (
+            <div
+              key={view}
+              className={`nav-item ${currentView === view ? "active" : ""}`}
+              onClick={() => navigate(view)}
+            >
+              {label}
+              {badge && <span className="badge">{badge}</span>}
+            </div>
+          ))}
 
           <div className="nav-group">
-            <div className="nav-group-header" onClick={toggleProducts}>
+            <div
+              className="nav-group-header"
+              onClick={() => setIsProductsOpen(!isProductsOpen)}
+            >
               <span>🛍️ Productos</span>
-
-              <span className={`arrow-icon ${isProductsOpen ? "rotate" : ""}`}>
-                ▼
-              </span>
+              <span className={`arrow-icon ${isProductsOpen ? "rotate" : ""}`}>▼</span>
             </div>
 
             {isProductsOpen && (
               <div className="nav-group-content">
-                <div
-                  className={`sub-nav ${
-                    currentView === "stock" ? "active" : ""
-                  }`}
-                  onClick={() => {
-                    setView("stock");
-                    closeSidebar();
-                  }}
-                >
-                  ↳ Salidas e ingresos
-                </div>
-                <div
-                  className={`sub-nav ${
-                    currentView === "resumen" ? "active" : ""
-                  }`}
-                  onClick={() => {
-                    setView("resumen");
-                    closeSidebar();
-                  }}
-                >
-                  ↳ Resumen
-                </div>
+                {PRODUCT_NAV.map(({ view, label }) => (
+                  <div
+                    key={view}
+                    className={`sub-nav ${currentView === view ? "active" : ""}`}
+                    onClick={() => navigate(view)}
+                  >
+                    {label}
+                  </div>
+                ))}
               </div>
             )}
           </div>
 
-          <div
-            className={`nav-item ${currentView === "informes" ? "active" : ""}`}
-            onClick={() => {
-              setView("informes");
-              closeSidebar();
-            }}
-          >
-            📄 Informes
-          </div>
-
-          <div
-            className={`nav-item ${currentView === "ajustes" ? "active" : ""}`}
-            onClick={() => {
-              setView("ajustes");
-              closeSidebar();
-            }}
-          >
-            ⚙️ Ajustes
-          </div>
+          {BOTTOM_NAV.map(({ view, label }) => (
+            <div
+              key={view}
+              className={`nav-item ${currentView === view ? "active" : ""}`}
+              onClick={() => navigate(view)}
+            >
+              {label}
+            </div>
+          ))}
         </nav>
 
-        <div className="logout" onClick={onLogout}>
-          ↪ Log out
-        </div>
+        <div className="logout" onClick={onLogout}>↪ Log out</div>
       </aside>
     </>
   );
