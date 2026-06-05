@@ -1,45 +1,30 @@
 {
-  "name": "tahona-app",
-  "version": "0.1.0",
-  "homepage": "https://Lichundead.github.io/tahona-app",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-scripts": "^0.0.0",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  }
+    "name": "tahona-app",
+    "version": "0.1.0",
+    "homepage": "https://Lichundead.github.io/tahona-app",
+    "private": true,
+    "dependencies": {
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7"
+    },
+    "scripts": {
+        "dev": "vite",
+        "start": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "vitest",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.2",
+        "@testing-library/user-event": "^13.5.0",
+        "@vitejs/plugin-react": "^6.0.2",
+        "gh-pages": "^6.3.0",
+        "jsdom": "^29.1.1",
+        "vite": "^8.0.16",
+        "vitest": "^4.1.8"
+    }
 }
