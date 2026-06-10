@@ -1,3 +1,7 @@
+/* Estilos compartidos por las páginas de la app
+   (encabezado, botones, tablas y paginación). */
+
+/* --- ESTRUCTURA DE PÁGINA --- */
 .report-page {
   width: 100%;
   max-width: 1400px;
@@ -15,15 +19,21 @@
 .report-header h1 {
   font-size: 1.8rem;
   margin: 0;
-  color: #1a1b1e;
+  color: var(--bg-dark);
 }
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 .nav-bar {
   margin-bottom: 30px;
 }
 
-/* Botones y Inputs */
+/* --- BOTONES E INPUTS --- */
 .btn-back-dark {
-  background: #1a1b1e;
+  background: var(--bg-dark);
   color: white;
   border: none;
   padding: 10px 25px;
@@ -46,12 +56,14 @@
   border-radius: 30px;
   width: 250px;
 }
+
 .user-profile {
   font-weight: bold;
   cursor: pointer;
   margin-left: 15px;
 }
 
+/* --- TARJETA CONTENEDORA --- */
 .table-card {
   background: white;
   border-radius: 25px;
@@ -59,22 +71,34 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-/* --- ESTILOS ESPECÍFICOS DE INFORMES --- */
-
-.reports-toolbar {
+/* --- BARRA DE HERRAMIENTAS --- */
+.table-toolbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
-/* Empuja el contenido a la derecha en pantallas grandes */
-.spacer {
-  flex-grow: 1;
+.btn-add-dark {
+  background-color: var(--bg-dark);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .toolbar-actions {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .btn-outline {
@@ -87,7 +111,7 @@
   cursor: pointer;
 }
 
-/* Tabla */
+/* --- TABLA RESPONSIVA --- */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -103,13 +127,15 @@
 .custom-table th {
   text-align: left;
   padding: 20px 10px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #f3f4f6;
   font-weight: 700;
   color: #111;
+  font-size: 0.95rem;
 }
 
 .custom-table td {
   padding: 25px 10px;
+  border-bottom: 1px solid #f9fafb;
   color: #4b5563;
   font-size: 0.95rem;
 }
@@ -118,20 +144,24 @@
   background-color: #f9fafb;
 }
 
-/* Centrar columna de números */
 .text-center {
   text-align: center;
 }
 .fw-bold {
   font-weight: bold;
-  color: #1a1b1e;
+  color: var(--bg-dark);
 }
 .text-muted {
   color: #9ca3af;
   font-size: 0.9rem;
 }
+.dots {
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
 
-/* Paginación */
+/* --- PAGINACIÓN --- */
 .pagination-container {
   display: flex;
   justify-content: center;
@@ -139,6 +169,7 @@
   margin-top: 40px;
   flex-wrap: wrap;
 }
+
 .page-number {
   width: 40px;
   height: 40px;
@@ -146,13 +177,22 @@
   align-items: center;
   justify-content: center;
   background-color: #f3f4f6;
+  border: none;
   border-radius: 8px;
   color: #6b7280;
   cursor: pointer;
+  font: inherit;
+  font-weight: 500;
+  transition: all 0.2s;
 }
+
 .page-number.active {
-  background-color: #1a1b1e;
+  background-color: var(--bg-dark);
   color: white;
+}
+
+.page-number:hover:not(.active) {
+  background-color: #e5e7eb;
 }
 
 /* --- RESPONSIVE --- */
@@ -165,19 +205,24 @@
     width: 100%;
     margin: 0;
   }
+  .header-right {
+    width: 100%;
+  }
   .user-profile {
     margin: 10px 0 0 0;
   }
 
-  .reports-toolbar {
-    justify-content: flex-start;
+  .table-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .spacer {
-    display: none;
-  } /* En móvil no queremos el espacio vacío */
+
+  .btn-add-dark {
+    width: 100%;
+    justify-content: center;
+  }
   .toolbar-actions {
     width: 100%;
-    margin-top: 10px;
   }
   .btn-outline {
     flex: 1;

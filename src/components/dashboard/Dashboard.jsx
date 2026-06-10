@@ -1,31 +1,29 @@
-import React from "react";
 import "./Dashboard.css";
+import { useAuth } from "../../context/AuthContext";
+import { KPIS } from "../../data/mockData";
 
 const Dashboard = () => {
+  const { user } = useAuth();
+  const nombreCorto = user.nombre.split(" ")[0];
+
   return (
     <div className="content">
       <header>
-        <h1>Bienvenida María</h1>
+        <h1>Bienvenida {nombreCorto}</h1>
         <p>Aquí está el resumen del día</p>
-        <div className="user-profile">👤 María Ricaurte</div>
+        <div className="user-profile">👤 {user.nombre}</div>
       </header>
 
       <div className="kpi-grid">
-        <div className="card kpi dark">
-          <h3>Stock Total</h3>
-          <div className="number">1.450</div>
-          <div className="trend positive">↗ +15.6%</div>
-        </div>
-        <div className="card kpi">
-          <h3>Ingresos</h3>
-          <div className="number">1.239</div>
-          <div className="trend positive">↗ +12.7%</div>
-        </div>
-        <div className="card kpi">
-          <h3>Salidas</h3>
-          <div className="number">963</div>
-          <div className="trend negative">↘ -12.7%</div>
-        </div>
+        {KPIS.map(({ id, titulo, valor, tendencia, positiva, destacada }) => (
+          <div key={id} className={`card kpi ${destacada ? "dark" : ""}`}>
+            <h3>{titulo}</h3>
+            <div className="number">{valor}</div>
+            <div className={`trend ${positiva ? "positive" : "negative"}`}>
+              {positiva ? "↗" : "↘"} {tendencia}
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="charts-grid">

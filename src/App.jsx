@@ -1,58 +1,50 @@
-import React, { useState } from "react";
+import { Suspense } from "react";
 import "./App.css";
 
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { NavigationProvider, useNavigation } from "./context/NavigationContext";
+import { DEFAULT_VIEW } from "./constants/views";
+import { VIEW_COMPONENTS } from "./views";
 import Login from "./components/auth/Login";
 import Sidebar from "./components/layout/Sidebar";
-import Dashboard from "./components/dashboard/Dashboard";
-import Stock from "./components/inventory/Stock";
-import Resumen from "./components/reports/Resumen";
-import Informes from "./components/reports/Informes";
-import Mensajes from "./components/messages/Mensajes";
-import Ajustes from "./components/options/Ajustes";
 
-const VIEWS = {
-  dashboard: Dashboard,
-  mensajes: Mensajes,
-  stock: Stock,
-  resumen: Resumen,
-  informes: Informes,
-  ajustes: Ajustes,
-};
-
-function App() {
-  const [session, setSession] = useState(false);
-  const [view, setView] = useState("dashboard");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const handleLogout = () => {
-    setSession(false);
-    setView("dashboard");
-    setIsSidebarOpen(false);
-  };
-
-  if (!session) {
-    return <Login onLogin={() => setSession(true)} />;
-  }
-
-  const CurrentView = VIEWS[view];
+function AppLayout() {
+  const { view } = useNavigation();
+  const CurrentView = VIEW_COMPONENTS[view] ?? VIEW_COMPONENTS[DEFAULT_VIEW];
 
   return (
     <div className="app-layout">
-      <Sidebar
-        setView={setView}
-        currentView={view}
-        onLogout={handleLogout}
-        isOpen={isSidebarOpen}
-        closeSidebar={() => setIsSidebarOpen(false)}
-        openSidebar={() => setIsSidebarOpen(true)}
-      />
+      <Sidebar />
       <main className="main-content">
-        <CurrentView
-          setView={setView}
-          toggleSidebar={() => setIsSidebarOpen(true)}
-        />
+        <Suspense fallback={<div className="view-loader">Cargando…</div>}>
+          <CurrentView />
+        </Suspense>
       </main>
     </div>
+  );
+}
+
+function AppContent() {
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) {
+    return <Login />;
+  }
+
+  // NavigationProvider se monta al iniciar sesión, así la navegación
+  // se reinicia (vista por defecto, sidebar cerrado) en cada sesión.
+  return (
+    <NavigationProvider>
+      <AppLayout />
+    </NavigationProvider>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 
